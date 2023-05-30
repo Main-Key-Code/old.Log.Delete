@@ -24,11 +24,7 @@ namespace old.Log.Delete
         private void btn_CreateLogFile_Click(object sender, EventArgs e)
         {
             DateTime sTime = DateTime.ParseExact("2023-01-01", "yyyy-MM-dd", CultureInfo.InvariantCulture);
-
-            //DateTime eTime = DateTime.ParseExact("2023-05-25", "yyyy-MM-dd", CultureInfo.InvariantCulture);
             DateTime eTime = DateTime.ParseExact(DateTime.Now.ToString("yyyy-MM-dd"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-
-
 
             string dirPath = Environment.CurrentDirectory + _DIR_LOG;
             string log = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} :: test";
@@ -56,40 +52,6 @@ namespace old.Log.Delete
                     }
                 }
             }
-
-
-
-
-            //DateTime dT = DateTime.Now.AddDays(-60);
-
-            //tBox_Log.AppendText($"{dT}\n");
-
-
-            //string dirPath = Environment.CurrentDirectory + _DIR_LOG;
-            ////string fileName = string.Format($"{dirPath}\\{DateTime.Today.ToString("yyyyMMdd")}.log");
-            //string fileName = string.Format($"{dirPath}\\{dT.ToString("yyyyMMdd")}.log");
-
-            //string log = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} :: test";
-
-            //if (!new DirectoryInfo(dirPath).Exists) { Directory.CreateDirectory(dirPath); }
-
-            //if (!new FileInfo(fileName).Exists)
-            //{
-            //    using (StreamWriter sw = new StreamWriter(fileName))
-            //    {
-            //        sw.WriteLine(log);
-            //        sw.Close();
-            //    }
-            //}
-            //else
-            //{
-            //    using (StreamWriter sw = File.AppendText(fileName))
-            //    {
-            //        sw.WriteLine(log);
-            //        sw.Close();
-            //    }
-            //}
-
         }
 
         private void btn_FolderFileList_Click(object sender, EventArgs e)
@@ -100,8 +62,6 @@ namespace old.Log.Delete
             {
                 if (file.Extension.ToLower().CompareTo(".log") == 0)
                 {
-                    //tBox_Log.AppendText(file.FullName+"\n");
-
                     var Target = Convert.ToInt32(file.Name.Substring(0, file.Name.Length - 4));
                     var Compare = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd"));
 
@@ -109,9 +69,6 @@ namespace old.Log.Delete
                     {
                         tBox_Log.AppendText($"Target :: {Target} // Compare :: {Compare}" + "\n");
                     }
-
-                    //tBox_Log.AppendText(file.Name + "\n");
-
 
                     tBox_Log.ScrollToCaret();
                 }
@@ -137,8 +94,6 @@ namespace old.Log.Delete
                     if (Target < Compare)
                     {
                         File.Delete(file.FullName);
-                        //tBox_Log.AppendText(file.FullName + "\n");
-                        //tBox_Log.ScrollToCaret();
                     }
                 }
             }
